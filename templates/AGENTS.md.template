@@ -1,0 +1,82 @@
+# AI Agent Persona
+
+## Greeting
+{greeting}
+
+## Context Loading (MANDATORY)
+When starting a session:
+1. Read `00_System/01_context/business-context.md` (L0 — Business Context)
+2. Read `00_System/01_context/domain-context.md` (L1 — Domain Context)
+3. When working on a specific project, read `[workspace]/00_context/project-context.md` (L2)
+4. For feature-level work, ask user for `feature-context.md` if available (L3 — optional, user-managed)
+
+## Gene Flow Rules
+- L0 (business-context.md) is IMMUTABLE — never override
+- L1 (domain-context.md) must not conflict with L0
+- L2 (project-context.md) adds delta context only
+- L3 (feature-context.md) is user-managed — read on request, never auto-generate
+- Always trace compliance: L3 → L2 → L1 → L0
+
+## System Resources
+When working in a Workspace Manager project, the following resources
+are available under 00_System/:
+
+- 00_System/01_context/   — Business context (L0), Domain context (L1)
+- 00_System/02_policies/    — Unit/Department policies (may be empty)
+- 00_System/03_prompts/   — Unit/Department shared prompts (may be empty)
+- 00_System/04_standards/ — Architecture standards per Unit (ai/cloud)
+- 00_System/05_tool-configs/ — Unit/Department tool configurations (may be empty)
+
+Rules:
+1. ALWAYS check the relevant resource before making decisions.
+2. Standards files must be followed for architecture and output formatting.
+3. When a project workspace is active, read its project-context.md.
+4. Folders may be empty (.gitkeep) — skip empty folders silently.
+
+## Behavior Rules
+{behavior_rules}
+
+## Output Preferences
+{output_preferences}
+
+## Best Practices
+- **Start each session by re-reading L0 + L1 context files** — context may have been updated
+- **Explicitly confirm assumptions** before acting on ambiguous requests
+- **Use the workspace folder structure** to find project-specific files
+- **Refer to Gene Flow rules** when resolving conflicting instructions
+- **Cite context sections** when answering to build trust
+- **Ask for clarification** when business rules seem to conflict
+- **Save important decisions** using /save-brain-wm for continuity
+- **Check .brain/session.json** at session start to resume previous work
+- **Apply folder/file naming conventions** from `wm-folder-naming` skill:
+  - Folders: Numeric prefix for ordering (00_, 10_, 20_...)
+  - Files: ISO 8601 date-based (YYYY-MM-DD-description-vNN.ext)
+  - User override: If user specifies exact name → use as-is
+- **Use AWF workflows** (plan-awf, design-awf, code-awf, etc.) for structured execution
+  - ⚠️ Requires running `/sync-awf` first after workspace initialization
+
+## Workspace Manager Commands
+
+### Always Available
+- `/init-wm` — Initialize a new workspace
+- `/update-persona` — Update this persona configuration
+- `/sync-awf` — Download AWF workflows + skills (run after /init-wm)
+- `/sync-context` — Sync context files from context-hub
+- `/sync-tool` — Sync tools from FCI Skills marketplace
+- `/save-brain-wm` — Save current session state
+- `/recap-wm` — Resume previous session
+- `/help-wm` — Show available commands
+
+### Available After `/sync-awf`
+- `/plan-awf` — Create plan for feature/project
+- `/design-awf` — Detailed technical design
+- `/visualize-awf` — UI/UX design mockup
+- `/code-awf` — Write code to specification
+- `/run-awf` — Run application
+- `/test-awf` — Run tests
+- `/debug-awf` — Find and fix bugs
+- `/audit-awf` — Code + security audit
+- `/deploy-awf` — Deploy to production
+- `/refactor-awf` — Code cleanup + optimization
+- `/review-awf` — Project overview + handover
+- `/rollback-awf` — Rollback to previous version

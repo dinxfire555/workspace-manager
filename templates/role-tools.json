@@ -1,0 +1,189 @@
+{
+  "version": "1.0.0",
+  "description": "Role-to-tool mapping for FCI Skills marketplace recommendations",
+  "roles": {
+    "Dev FE": {
+      "display_name": "Developer (Frontend)",
+      "description": "Build and maintain frontend features, write UI code",
+      "recommended_tools": [
+        "ctx-init",
+        "guideline-conv-ui",
+        "prototype-generator",
+        "task-architecture-decision-record",
+        "task-architecture-proposal",
+        "cloud-workflow-mui-to-v2"
+      ],
+      "required_skills": [
+        "code",
+        "test",
+        "debug",
+        "refactor",
+        "review"
+      ],
+      "optional_skills": [
+        "plan",
+        "design"
+      ]
+    },
+    "Dev BE": {
+      "display_name": "Developer (Backend)",
+      "description": "Build and maintain backend features, write API code",
+      "recommended_tools": [
+        "ctx-init",
+        "guideline-conv-ui",
+        "prototype-generator",
+        "task-architecture-decision-record",
+        "task-architecture-proposal",
+        "cloud-workflow-mui-to-v2"
+      ],
+      "required_skills": [
+        "code",
+        "test",
+        "debug",
+        "refactor",
+        "review"
+      ],
+      "optional_skills": [
+        "plan",
+        "design"
+      ]
+    },
+    "DevOps": {
+      "display_name": "DevOps Engineer",
+      "description": "Manage CI/CD pipelines, infrastructure, deployments",
+      "recommended_tools": [],
+      "required_skills": [],
+      "optional_skills": [
+        "deploy"
+      ]
+    },
+    "Designer": {
+      "display_name": "UI/UX Designer",
+      "description": "Design user interfaces and user experiences",
+      "recommended_tools": [
+        "prototype-generator"
+      ],
+      "required_skills": [
+        "visualize"
+      ],
+      "optional_skills": []
+    },
+    "PO": {
+      "display_name": "Product Owner",
+      "description": "Define product vision, prioritize backlog, manage stakeholders",
+      "recommended_tools": [
+        "company-docsmith",
+        "prototype-generator"
+      ],
+      "required_skills": [
+        "plan",
+        "brainstorm"
+      ],
+      "optional_skills": [
+        "review",
+        "visualize"
+      ]
+    },
+    "PM": {
+      "display_name": "Project Manager",
+      "description": "Plan sprints, track progress, manage team delivery",
+      "recommended_tools": [
+        "company-docsmith",
+        "prototype-generator",
+        "ctx-init"
+      ],
+      "required_skills": [
+        "plan",
+        "design",
+        "visualize"
+      ],
+      "optional_skills": [
+        "review"
+      ]
+    },
+    "BA": {
+      "display_name": "Business Analyst",
+      "description": "Gather requirements, analyze workflows, write specifications",
+      "recommended_tools": [
+        "guideline-conv-ui",
+        "company-docsmith",
+        "prototype-generator"
+      ],
+      "required_skills": [
+        "brainstorm",
+        "design"
+      ],
+      "optional_skills": [
+        "plan",
+        "visualize"
+      ]
+    },
+    "Tester": {
+      "display_name": "Tester / QA",
+      "description": "Write test cases, execute tests, report defects",
+      "recommended_tools": [],
+      "required_skills": [
+        "test"
+      ],
+      "optional_skills": [
+        "debug",
+        "review"
+      ]
+    },
+    "SM": {
+      "display_name": "Scrum Master",
+      "description": "Facilitate ceremonies, remove blockers, coach team",
+      "recommended_tools": [
+        "init-zhcc"
+      ],
+      "required_skills": [
+        "plan",
+        "next"
+      ],
+      "optional_skills": [
+        "review"
+      ]
+    },
+    "Sales": {
+      "display_name": "Sales",
+      "description": "Demonstrate products, manage客户 relationships",
+      "recommended_tools": [
+        "prototype-generator"
+      ],
+      "required_skills": [
+        "visualize"
+      ],
+      "optional_skills": []
+    },
+    "Operations": {
+      "display_name": "Operations",
+      "description": "Monitor systems, handle incidents, maintain infrastructure",
+      "recommended_tools": [
+        "guideline-django"
+      ],
+      "required_skills": [],
+      "optional_skills": [
+        "debug"
+      ]
+    }
+  },
+  "category_mapping": {
+    "development": "Development tools (code, test, debug)",
+    "ai": "AI-related tools (guidelines, generators)",
+    "planning": "Planning and management tools",
+    "analysis": "Analysis and requirements tools",
+    "testing": "Testing and QA tools"
+  },
+  "skill_workflow_mapping": {
+    "code": "code-awf.md",
+    "test": "test-awf.md",
+    "debug": "debug-awf.md",
+    "refactor": "refactor-awf.md",
+    "review": "review-awf.md",
+    "plan": "plan-awf.md",
+    "design": "design-awf.md",
+    "visualize": "visualize-awf.md",
+    "brainstorm": "brainstorm",
+    "next": "next"
+  }
+}

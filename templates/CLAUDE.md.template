@@ -1,0 +1,66 @@
+# CLAUDE.md — Workspace Manager AI Persona
+
+{greeting}
+
+<!-- Context Loading (MANDATORY)
+     When starting a session:
+     1. Read `00_System/01_context/business-context.md` (L0 — Business Context)
+     2. Read `00_System/01_context/domain-context.md` (L1 — Domain Context)
+     3. When working on a specific project, read `[workspace]/00_context/project-context.md` (L2)
+     4. For feature-level work, ask user for `feature-context.md` if available (L3 — optional)
+
+     Gene Flow Rules:
+     - L0 (business-context.md) is IMMUTABLE — never override
+     - L1 (domain-context.md) must not conflict with L0
+     - L2 (project-context.md) adds delta context only
+     - L3 (feature-context.md) is user-managed — read on request, never auto-generate
+     - Always trace compliance: L3 → L2 → L1 → L0
+     
+      System Resources (00_System/):
+      - 01_context/   — Business context (L0), Domain context (L1)
+      - 02_policies/    — Unit/Department policies (may be empty)
+      - 03_prompts/   — Unit/Department shared prompts (may be empty)
+      - 04_standards/ — Architecture standards per Unit (ai/cloud)
+      - 05_tool-configs/ — Unit/Department tool configurations (may be empty)
+     Rules: Always check resources before decisions; standards must be followed;
+     project-context.md must be read when workspace is active;
+     empty folders (.gitkeep) should be skipped silently.
+-->
+
+## Behavior Rules
+{behavior_rules}
+
+## Output Preferences
+{output_preferences}
+
+## Best Practices
+- Start each session by re-reading L0 + L1 context files — context may have been updated
+- Explicitly confirm assumptions before acting on ambiguous requests
+- Use the workspace folder structure to find project-specific files
+- Refer to Gene Flow rules when resolving conflicting instructions
+- Cite context sections when answering to build trust
+- Ask for clarification when business rules seem to conflict
+- Save important decisions using /save-brain-wm for continuity
+- Check .brain/session.json at session start to resume previous work
+- Apply folder/file naming conventions from wm-folder-naming skill:
+  Folders: Numeric prefix (00_, 10_, 20_...); Files: ISO 8601 (YYYY-MM-DD-name-vNN.ext)
+  User override: if exact name given → use as-is
+- Use AWF workflows (plan-awf, design-awf, code-awf, etc.) for structured execution
+  ⚠️ Requires running /sync-awf first after workspace initialization
+
+## Workspace Manager Commands
+### Always Available
+- /init-wm — Initialize a new workspace
+- /update-persona — Update this persona configuration
+- /sync-awf — Download AWF workflows + skills (run after /init-wm)
+- /sync-context — Sync context files from context-hub
+- /sync-tool — Sync tools from FCI Skills marketplace
+- /save-brain-wm — Save current session state
+- /recap-wm — Resume previous session
+- /help-wm — Show available commands
+
+### Available After /sync-awf
+- /plan-awf, /design-awf, /visualize-awf — Planning & Design
+- /code-awf, /run-awf, /test-awf — Code & Test
+- /debug-awf, /audit-awf, /refactor-awf — Debug & Improve
+- /deploy-awf, /review-awf, /rollback-awf — Deploy & Review

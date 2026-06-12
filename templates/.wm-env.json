@@ -1,0 +1,23 @@
+{
+  "version": "1.0.3",
+  "context_hub": {
+    "type": "gitlab",
+    "raw_url": "https://raw.githubusercontent.com/your-org/context-hub/master",
+    "project_url": "https://gitlab.fci.vn/dungnt261/context-hub",
+    "branch": "master",
+    "unit": "",
+    "department": ""
+  },
+  "fci_skills": {
+    "type": "gitlab",
+    "raw_url": "https://raw.githubusercontent.com/your-org/fci-skills/master",
+    "project_url": "https://gitlab.fci.vn/dungnt261/fci-skills",
+    "branch": "master"
+  },
+  "workspace_manager": {
+    "type": "gitlab",
+    "raw_url": "https://raw.githubusercontent.com/github-user/github-repo/master",
+    "project_url": "https://gitlab.fci.vn/dungnt261/workspace-manager",
+    "branch": "master"
+  }
+}

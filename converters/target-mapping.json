@@ -1,0 +1,94 @@
+{
+  "version": "2.0.0",
+  "description": "Target mapping for Workspace Manager Convert Engine (v2 — 4 targets)",
+  "targets": {
+    "claude-code": {
+      "name": "Claude Code",
+      "base_path": "~/.claude",
+      "workflows_dir": "commands",
+      "skills_dir": "skills",
+      "config_file": "claude.json",
+      "config_format": "json",
+      "persona_file": "CLAUDE.md",
+      "compatibility": {
+        "supports_mcp": true,
+        "mcp_config": ".mcp.json"
+      }
+    },
+    "opencode": {
+      "name": "Opencode",
+      "base_path": "~/.config/opencode",
+      "workflows_dir": "awf-workflows",
+      "skills_dir": "awf-skills",
+      "config_file": "opencode.jsonc",
+      "config_format": "jsonc",
+      "persona_file": "AGENTS.md",
+      "compatibility": {
+        "supports_agents": true,
+        "supports_commands": true
+      }
+    },
+    "codex": {
+      "name": "Codex CLI",
+      "base_path": "~/.codex",
+      "workflows_dir": "commands",
+      "skills_dir": "skills",
+      "config_file": "config.json",
+      "config_format": "json",
+      "persona_file": "AGENTS.md",
+      "compatibility": {
+        "supports_commands": true
+      }
+    },
+    "antigravity": {
+      "name": "Antigravity",
+      "base_path": "~/.gemini/config",
+      "workflows_dir": "global_workflows",
+      "skills_dir": "skills",
+      "config_file": "GEMINI.md",
+      "config_format": "markdown",
+      "persona_file": "GEMINI.md",
+      "compatibility": {
+        "supports_global_workflows": true
+      }
+    }
+  },
+  "conversion_rules": {
+    "wm-workflow": {
+      "description": "A Workspace Manager workflow file (.md)",
+      "actions": {
+        "claude-code": ["copy_to_workflows_dir"],
+        "opencode": ["copy_to_workflows_dir", "register_command_in_config"],
+        "codex": ["copy_to_workflows_dir", "register_command_in_config"],
+        "antigravity": ["copy_to_workflows_dir"]
+      }
+    },
+    "wm-skill": {
+      "description": "A Workspace Manager skill file (SKILL.md)",
+      "actions": {
+        "claude-code": ["copy_to_skills_dir"],
+        "opencode": ["copy_to_skills_dir", "register_agent_in_config"],
+        "codex": ["copy_to_skills_dir", "register_skill_in_config"],
+        "antigravity": ["copy_to_skills_dir"]
+      }
+    },
+    "wm-schema": {
+      "description": "Schema file (.json)",
+      "actions": {
+        "claude-code": ["copy_to_schemas_dir"],
+        "opencode": ["copy_to_schemas_dir"],
+        "codex": ["copy_to_schemas_dir"],
+        "antigravity": ["copy_to_schemas_dir"]
+      }
+    },
+    "wm-template": {
+      "description": "Template file (.json)",
+      "actions": {
+        "claude-code": ["copy_to_templates_dir"],
+        "opencode": ["copy_to_templates_dir"],
+        "codex": ["copy_to_templates_dir"],
+        "antigravity": ["copy_to_templates_dir"]
+      }
+    }
+  }
+}

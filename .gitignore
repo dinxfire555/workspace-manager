@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+
+# PowerShell transcripthistory
+*.txt
+
+# Node
+node_modules/
+
+# Brain (local session state)
+.brain/session.json
+.brain/session_log.txt
+.brain/handover.md
+.brain/snapshots/
+.brain/brain.json
+.brain/preferences.json

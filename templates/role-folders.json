@@ -1,0 +1,76 @@
+{
+  "version": "1.1.0",
+  "description": "Default folder structure templates per Scrum role with numeric prefixes",
+  "_folder_numbering": {
+    "description": "Mapping of numeric prefix to category name for workspace sub-folders",
+    "mapping": {
+      "00": "context, temp (system folders inside workspace)",
+      "01": "docs",
+      "02": "src",
+      "03": "tests",
+      "04": "design",
+      "05": "deploy",
+      "06": "metrics",
+      "07": "test-plans",
+      "08": "test-cases",
+      "09": "test-reports",
+      "10": "bugs",
+      "11": "monitoring",
+      "12": "ci"
+    }
+  },
+  "roles": {
+    "PO": {
+      "display_name": "Product Owner",
+      "folders": ["01_docs/prd/", "01_docs/roadmap/", "01_docs/backlog/", "01_docs/priorities/"]
+    },
+    "PM": {
+      "display_name": "Project Manager",
+      "folders": ["01_docs/plan/", "01_docs/reports/", "01_docs/tasks/", "01_docs/schedule/"]
+    },
+    "BA": {
+      "display_name": "Business Analyst",
+      "folders": ["01_docs/requirements/", "01_docs/specs/", "01_docs/brd/", "01_docs/flow/"]
+    },
+    "Dev FE": {
+      "display_name": "Developer (Frontend)",
+      "folders": ["02_src/", "02_src/components/", "02_src/pages/", "02_src/styles/", "03_tests/", "03_tests/unit/", "01_docs/tech/"]
+    },
+    "Dev BE": {
+      "display_name": "Developer (Backend)",
+      "folders": ["02_src/", "02_src/api/", "02_src/models/", "02_src/services/", "03_tests/", "03_tests/unit/", "03_tests/integration/", "01_docs/tech/"]
+    },
+    "Tester": {
+      "display_name": "Tester / QA",
+      "folders": ["03_tests/", "07_test-plans/", "08_test-cases/", "09_test-reports/", "10_bugs/"]
+    },
+    "SM": {
+      "display_name": "Scrum Master",
+      "folders": ["01_docs/sprint/", "01_docs/sprint/backlog/", "01_docs/retro/", "06_metrics/", "06_metrics/velocity/"]
+    },
+    "DevOps": {
+      "display_name": "DevOps Engineer",
+      "folders": ["05_deploy/", "05_deploy/env/", "05_deploy/scripts/", "11_monitoring/", "12_ci/"]
+    },
+    "Designer": {
+      "display_name": "UI/UX Designer",
+      "folders": ["04_design/", "04_design/mockups/", "04_design/assets/", "04_design/prototypes/"]
+    },
+    "Sales": {
+      "display_name": "Sales",
+      "folders": ["01_docs/sales/", "01_docs/sales/proposals/", "01_docs/sales/contracts/", "01_docs/sales/crm/"]
+    },
+    "Operations": {
+      "display_name": "Operations",
+      "folders": ["01_docs/ops/", "01_docs/ops/runbooks/", "01_docs/ops/incidents/", "06_metrics/"]
+    },
+    "Other": {
+      "display_name": "Other / Custom Role",
+      "folders": ["01_docs/", "02_src/", "03_tests/"]
+    }
+  },
+  "dedup_rules": {
+    "description": "When a user has multiple roles, duplicate folder paths are created only once",
+    "strategy": "union"
+  }
+}
