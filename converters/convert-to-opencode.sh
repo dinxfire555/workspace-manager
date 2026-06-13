@@ -116,7 +116,7 @@ else
 
             # Add agent entry if not exists
             json=$(echo "$json" | jq --arg n "$wf_name" --arg d "$desc" --arg p "$prompt" \
-                'if .agent[$n] == null then .agent[$n] = {"description": $d, "mode": "subagent", "prompt": $p, "maxSteps": 50, "permission": {"external_directory": "allow"}} else . end')
+                'if .agent[$n] == null then .agent[$n] = {"description": $d, "mode": "subagent", "prompt": $p, "maxSteps": 80, "permission": {"external_directory": "allow"}} else . end')
 
             # Add command entry if not exists
             json=$(echo "$json" | jq --arg n "$wf_name" \
@@ -133,7 +133,7 @@ else
             prompt="You are the $skill_name skill. Read: $skill_md"
 
             json=$(echo "$json" | jq --arg n "$skill_name" --arg p "$prompt" \
-                'if .agent[$n] == null then .agent[$n] = {"description": "WM skill: \($n)", "mode": "subagent", "prompt": $p, "maxSteps": 50, "permission": {"external_directory": "allow"}} else . end')
+                'if .agent[$n] == null then .agent[$n] = {"description": "WM skill: \($n)", "mode": "subagent", "prompt": $p, "maxSteps": 80, "permission": {"external_directory": "allow"}} else . end')
         done
     fi
 

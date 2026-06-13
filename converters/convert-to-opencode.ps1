@@ -1,5 +1,5 @@
 param(
-    [ValidateSet("workflows","awf-workflows","skills","awf-skills","schemas","templates","all")]
+    [ValidateSet("workflows", "awf-workflows", "skills", "awf-skills", "schemas", "templates", "all")]
     [string]$ResourceType = "all",
     [string]$SourceDir = "",
     [string]$TargetBasePath = "",
@@ -45,7 +45,8 @@ function Read-Config {
             $result | Add-Member -NotePropertyName "command" -NotePropertyValue (New-Object PSObject) -Force
         }
         return $result
-    } catch {
+    }
+    catch {
         return New-EmptyConfig
     }
 }
@@ -62,7 +63,8 @@ function Add-ConfigProperty {
     param([object]$Target, [string]$Name, [object]$Value)
     if ($Target -is [System.Management.Automation.PSObject]) {
         $Target | Add-Member -NotePropertyName $Name -NotePropertyValue $Value -Force
-    } elseif ($Target -is [hashtable]) {
+    }
+    elseif ($Target -is [hashtable]) {
         $Target[$Name] = $Value
     }
 }
@@ -100,12 +102,16 @@ function Convert-Workflows {
             $agentExisting = $config.agent.PSObject.Properties.Name -contains $name
             if (-not $agentExisting) {
                 $desc = Get-WorkflowDescription -FilePath $f.FullName
+                $workflowMaxSteps = switch ($name) {
+                    "init-wm" { 80 }
+                    default { 50 }
+                }
                 $agentEntry = @{
                     "description" = $desc
-                    "mode" = "subagent"
-                    "prompt" = "You are the WM $name workflow executor.`n`nRead the complete instructions from:`n$mdPath`n`nFollow all stages sequentially."
-                    "maxSteps" = 50
-                    "permission" = @{ "external_directory" = "allow" }
+                    "mode"        = "subagent"
+                    "prompt"      = "You are the WM $name workflow executor.`n`nRead the complete instructions from:`n$mdPath`n`nFollow all stages sequentially."
+                    "maxSteps"    = $workflowMaxSteps
+                    "permission"  = @{ "external_directory" = "allow" }
                 }
                 Add-ConfigProperty -Target $config.agent -Name $name -Value $agentEntry
                 $changed = $true
@@ -115,10 +121,10 @@ function Convert-Workflows {
             $cmdExisting = $config.command.PSObject.Properties.Name -contains $name
             if (-not $cmdExisting) {
                 $cmdEntry = @{
-                    "template" = "Run the WM $name workflow. Input: {{input}}"
+                    "template"    = "Run the WM $name workflow. Input: {{input}}"
                     "description" = "WM workflow: $name"
-                    "agent" = $name
-                    "subtask" = $true
+                    "agent"       = $name
+                    "subtask"     = $true
                 }
                 Add-ConfigProperty -Target $config.command -Name $name -Value $cmdEntry
                 $changed = $true
@@ -157,10 +163,10 @@ function Convert-Skills {
             if (-not $existing) {
                 $entry = @{
                     "description" = "WM skill: $name"
-                    "mode" = "subagent"
-                    "prompt" = "You are the $name skill. Read: $destDir\SKILL.md"
-                    "maxSteps" = 50
-                    "permission" = @{ "external_directory" = "allow" }
+                    "mode"        = "subagent"
+                    "prompt"      = "You are the $name skill. Read: $destDir\SKILL.md"
+                    "maxSteps"    = 50
+                    "permission"  = @{ "external_directory" = "allow" }
                 }
                 Add-ConfigProperty -Target $config.agent -Name $name -Value $entry
                 $changed = $true
