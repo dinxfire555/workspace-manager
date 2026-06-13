@@ -105,6 +105,10 @@ For each selected AWF skill:
  Detect CLI/IDE target
  Call convert-to-{target}.ps1
  Install to target skills directory
+  
+REGISTER:
+ Register in config (opencode.jsonc / claude.json / config.json / GEMINI.md)
+ Supported targets: claude-code, opencode, codex, antigravity
 ```
 
 ### Step 8: Report Results
@@ -118,6 +122,8 @@ Display:
  Installed: N workflows, N skills
  Skipped: N
  Failed: N
+
+Registered to {claude-code, opencode, codex, antigravity} N workflows, N skills
 
  AWF workflows are now available:
  /plan-awf, /design-awf, /code-awf, /test-awf, ...
